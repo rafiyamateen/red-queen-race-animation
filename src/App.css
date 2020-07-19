@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  user-select: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+#root {
+  display: inline;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#sky, #earth {
+  position: absolute;
+  left: 0;
+  height: 50vh;
+  width: 100%;
+}
+
+#sky {
+  background: #246e89 url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/bg_sky.jpg") repeat-x 100% 100% / auto 100%;
+  top: 0;
+}
+
+#earth {
+  background: #eb125d url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/bg_earth.jpg") repeat-x 0 0 / 100% auto;
+  bottom: 0;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#red-queen-and-alice {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  width: 80%;
+  max-width: 450px;
+  z-index: 4;
+}
+
+#red-queen-and-alice img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#red-queen-and-alice:before {
+  content: " ";
+  display: block;
+  padding-top: 87%;
+}
+
+.bg-fg-imgs {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#fg-1, #fg-2 {
+  z-index: 5;
+}
+
+#fg-2, #bg-2 {
+  transform: translateX(100%);
+}
+
+#fg-1-img {
+  top: 0;
+  left: 10%;
+}
+
+#fg-2-img-1 {
+  top: 55%;
+  left: -30%
+}
+
+#fg-2-img-2 {
+  top: 30%;
+  left: 75%;
+}
+
+#bg-1-img-1 {
+  top: -20%;
+  left: 30%;
+  position: relative;
+  z-index: 3;
+}
+
+#bg-1-img-2 {
+  top: -40%;
+  left: 80%;
+  position: relative;
+  z-index: 3;
+}
+
+#bg-1-img-3 {
+  top: -15%;
+  left: 45%
+}
+
+#bg-2-img-1 {
+  top: 10%;
+  left: -5%;
+}
+
+#bg-2-img-2 {
+  top: -18%;
+  left: 65%;
   }
+
+#bg-2-img-3 {
+  top: -25%;
+  left: 90%
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (max-width:450px) {
+  #bg-1-img-2 {
+    top: -80%;
+    left: 120%;
   }
 }
