@@ -134,7 +134,7 @@ img {
   left: 90%
 }
 
-@media screen and (max-width:450px) {
+@media screen and (max-width:408px) {
   #bg-1-img-2 {
     top: -80%;
     left: 120%;
