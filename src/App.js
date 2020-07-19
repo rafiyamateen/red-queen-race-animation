@@ -54,39 +54,40 @@ function App() {
   })
 
   const bg_fg_imgs = [bg_1, bg_2, fg_1, fg_2];
+  useEffect(() => {
 
-  const adjustBackgroundPlayback = () => {
-    if (queen.getAnimation() && bg_fg_imgs[0].getAnimation()) {
-      if (queen.getAnimation().playbackRate < 0.8) {
-        bg_fg_imgs.forEach((img) => {
-          img.getAnimation().playbackRate = queen.getAnimation().playbackRate / 2 * -1;
-        });
-      } else if (queen.getAnimation().playbackRate > 1) {
-        bg_fg_imgs.forEach((img) => {
-          img.getAnimation().playbackRate = queen.getAnimation().playbackRate / 2;
-        });
-      } else {
-        bg_fg_imgs.forEach((img) => {
-          img.getAnimation().playbackRate = 0;
-        });
+    const adjustBackgroundPlayback = () => {
+      if (queen.getAnimation() && bg_fg_imgs[0].getAnimation()) {
+        if (queen.getAnimation().playbackRate < 0.8) {
+          bg_fg_imgs.forEach((img) => {
+            img.getAnimation().playbackRate = queen.getAnimation().playbackRate / 2 * -1;
+          });
+        } else if (queen.getAnimation().playbackRate > 1) {
+          bg_fg_imgs.forEach((img) => {
+            img.getAnimation().playbackRate = queen.getAnimation().playbackRate / 2;
+          });
+        } else {
+          bg_fg_imgs.forEach((img) => {
+            img.getAnimation().playbackRate = 0;
+          });
+        }
       }
     }
-  }
 
-  const speedIncrement = () => {
-    queen.getAnimation().playbackRate *= 1.1;
-    adjustBackgroundPlayback();
-  }
-
-  useEffect(() => {
+    const speedIncrement = () => {
+      queen.getAnimation().playbackRate *= 1.1;
+      adjustBackgroundPlayback();
+    }
+    
     setInterval(() => {
       if (queen.getAnimation().playbackRate > 0.4) {
         queen.getAnimation().playbackRate *= .9;
         adjustBackgroundPlayback();
       }
     }, 3000)
+
     document.addEventListener('click', speedIncrement)
-  }, [])
+  }, [queen, bg_fg_imgs])
 
   return (
     <div id='container'>
@@ -98,21 +99,21 @@ function App() {
         </div>
       </div>
       <div className='bg-fg-imgs' id='fg-1' ref={fg_1.ref}>
-        <img id='fg-1-img' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/palm3_small.png" />
+        <img id='fg-1-img' alt='palm' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/palm3_small.png" />
       </div>
       <div className='bg-fg-imgs' id='fg-2' ref={fg_2.ref}>
-        <img id='fg-2-img-1' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/bush_small.png" />
-        <img id='fg-2-img-2' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/w_rook_upright_small.png" />
+        <img id='fg-2-img-1' alt='bush' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/bush_small.png" />
+        <img id='fg-2-img-2' alt='w_rook_upright' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/w_rook_upright_small.png" />
       </div>
       <div className='bg-fg-imgs' id='bg-1' ref={bg_1.ref}>
-        <img id='bg-1-img-1' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/r_pawn_upright_small.png" />
-        <img id='bg-1-img-2' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/w_rook_small.png" />
-        <img id='bg-1-img-3' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/palm1_small.png" />
+        <img id='bg-1-img-1' alt='pawn_upright' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/r_pawn_upright_small.png" />
+        <img id='bg-1-img-2' alt='w_rook' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/w_rook_small.png" />
+        <img id='bg-1-img-3' alt='palm' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/palm1_small.png" />
       </div>
       <div className='bg-fg-imgs' id='bg-2' ref={bg_2.ref}>
-        <img id='bg-2-img-1' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/r_pawn_small.png" />
-        <img id='bg-2-img-2' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/r_knight_small.png" />
-        <img id='bg-2-img-3' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/palm2_small.png" />
+        <img id='bg-2-img-1' alt='pawn' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/r_pawn_small.png" />
+        <img id='bg-2-img-2' alt='knight' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/r_knight_small.png" />
+        <img id='bg-2-img-3' alt='palm' src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/641/palm2_small.png" />
       </div>
     </div>
   );
